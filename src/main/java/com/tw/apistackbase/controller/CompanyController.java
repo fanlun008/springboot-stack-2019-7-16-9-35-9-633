@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 @RequestMapping("/companies")
 public class CompanyController {
 
-    private static Map<String, Company> companyMap = new HashMap<>();
+    public static Map<String, Company> companyMap = new HashMap<>();
 
     static {
 
@@ -65,6 +65,21 @@ public class CompanyController {
     public ResponseEntity addCompany(@RequestBody Company company) {
         Company put = companyMap.put(company.getCompanyName(), company);
         return ResponseEntity.ok().body("add successful");
+    }
+
+    @PutMapping("/{name}")
+    public ResponseEntity updateCompany(@PathVariable("name") String name, @RequestBody Company company) {
+        Company result = companyMap.get(name);
+        result.setCompanyName(company.getCompanyName());
+        result.setEmployeeList(company.getEmployeeList());
+        result.setEmployeesNumber(company.getEmployeeList().size());
+        return ResponseEntity.ok().body("update successful");
+    }
+
+    @DeleteMapping("/{name}")
+    public ResponseEntity deleteCompany(@PathVariable("name") String name){
+        Company remove = companyMap.remove(name);
+        return ResponseEntity.ok().body("delete OK and remove companyName is "+ remove.getCompanyName());
     }
 
 }
