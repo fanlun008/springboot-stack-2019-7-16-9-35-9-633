@@ -2,7 +2,6 @@ package com.tw.apistackbase;
 
 
 import com.alibaba.fastjson.JSON;
-import com.sun.xml.internal.xsom.impl.Ref;
 import com.tw.apistackbase.Entity.Company;
 import com.tw.apistackbase.controller.CompanyController;
 import org.junit.Test;
@@ -15,9 +14,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
